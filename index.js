@@ -18,24 +18,20 @@ var arrayData = []; /* Тип данных: Массив */
   let popup = document.querySelector('.popup_open');
   popup.addEventListener('click', () => {
     const form = document.querySelector('#url').parentNode('.form');
-    const data = document.getElementById('url').value;
+    const data = document.querySelector('#url input').value;
     const url = form.getAttributes('action');
     const popupOpen = document.querySelector('.popup_open');
     const popupInner = document.querySelector('.popup_inner');
 
-    let successRequest = () => {
-      popupOpen.classList.add("open");
-      popupInner.classList.add("open");
-      popupInner.innerHTML = dataText;
-      let dataTitleCreate = document.createElement('h1');
-      dataTitleCreate.innerHTML = dataTitle;
-      popupInner.insertBefore(dataTitleCreate)
-  }
-
     axios.get(url)
             .then(response => {
                 const dataResponse = response.data.data
-                successRequest();
+                popupOpen.classList.add("open");
+                popupInner.classList.add("open");
+                popupInner.innerHTML = dataText;
+                let dataTitleCreate = document.createElement('h1');
+                dataTitleCreate.innerHTML = dataTitle;
+                popupInner.insertBefore(dataTitleCreate)
             })
             .catch(error => console.error(error));
 });
