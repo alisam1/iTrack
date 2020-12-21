@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>iTrack</title>
+</head>
+
+<!--Style-->
+
+<style>
+    .range-block{
+        width: 30%;
+        border: 2px solid #e4e4e4;
+        border-radius: 4px;
+    }
+
+    #range-result{
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-align: center;
+        font-size: 18px;
+        position: relative;
+        top: 5px
+    }
+
+    #range{
+        position: relative;
+        top: 9px;
+        width: 100%;
+    }
+
+    input#range[type="range"]{
+        -webkit-appearance: none;
+        width: 100%;
+        height: 2px;
+        outline: none !important;
+        appearance:none;
+        border:none;
+        border-radius:0px;
+    }
+    input#range[type="range"]::-moz-focus-outer {
+        border: 0;
+    }
+    input#range[type="range"]:hover {
+        outline:none;
+    }
+
+    /* Chrome */
+
+      input#range[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 18px;
+        height: 18px;
+        border: 4px solid #eeeeee;
+        background: #ff9000;
+        cursor: pointer;
+        border-radius: 50%;
+        outline:none;
+        position: relative;
+        top: -7px;
+    }
+
+    input#range[type="range"]::-webkit-slider-progress-color {
+        background-color: #ff9000;
+        height: 100%;
+        border-radius:0px;
+        border:none;
+    }
+    input#range[type="range"]::-webkit-slider-runnable-track {
+        background-color: #ccc;
+        border-radius:0px;
+        border:none;
+        height: 100%;
+        position: relative;
+        top: -3px;
+    }
+
+    /* Moz */
+
+    input#range[type="range"]::-moz-range-thumb {
+        width: 18px;
+        height: 18px;
+        border: 4px solid #eeeeee;
+        background: #ff9000;
+        cursor: pointer;
+        border-radius: 50%;
+        outline:none;
+    }
+    input#range[type="range"]::-moz-range-progress {
+        background-color: #ff9000;
+        height: 100%;
+        border-radius:0px;
+        border:none;
+    }
+    input#range[type="range"]::-moz-range-track {
+        background-color: #ccc;
+        border-radius:0px;
+        border:none;
+        height: 100%;
+    }
+
+    /* IE*/
+
+    input#range[type="range"]::-ms-fill-lower {
+        background-color: #ff9000;
+        height: 100%;
+        border-radius:0px;
+        border:none;
+    }
+    input#range[type="range"]::-ms-fill-upper {
+        background-color: #ccc;
+        border-radius:0px;
+        border:none;
+        height: 100%;
+}
+</style>
+
+<body>
+
+    <div class="range-block">
+        <div id="range-result">0</div>
+        <input type="range" min="0" max="50000" id="range" oninput="testRange()" value="0">
+    </div>
+
+</body>
+
+<!--<script src="index.js"></script>-->
+
+<script src="index.js"></script>
+
+</html>
