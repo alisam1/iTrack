@@ -15,35 +15,30 @@ var arrayData = []; /* Тип данных: Массив */
 
 /* Function from jQuery to JS (Ex.3) */
 
-let popup = document.querySelector('.popup_open');
-popup.addEventListener('click', () => {
-    const form = document.querySelector('#url').parents('.form');
+  let popup = document.querySelector('.popup_open');
+  popup.addEventListener('click', () => {
+    const form = document.querySelector('#url').parentNode('.form');
+    const data = document.getElementById('url').value;
     const url = form.getAttributes('action');
-    const request = new XMLHttpRequest();
-    request.responseType =	'json';
-    request.open('POST', url, true);
-    request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    request.addEventListener('readystatechange', () => {
-        if (request.readyState === 4 && request.status === 200) {
-            let data = document.getElementById('url').value;
-            let popupOpen = document.querySelector('.popup_open');
-            let popupInner = document.querySelector('.popup_inner');
-            function successRequest(data){
-                popupOpen.classList.add("open");
-                popupInner.classList.add("open");
-                let dataText = data.getAttributes('text');
-                popupInner.innerHTML(dataText)
-                let dataTitle = data.getAttributes('title');
-                let dataTitleCreate = document.createElement('h1');
-                dataTitleCreate.innerHTML = dataTitle;
-                popupInner.before(dataTitleCreate)
-           }
-        }
-    });
-false});
+    const popupOpen = document.querySelector('.popup_open');
+    const popupInner = document.querySelector('.popup_inner');
 
+    let successRequest = () => {
+      popupOpen.classList.add("open");
+      popupInner.classList.add("open");
+      popupInner.innerHTML = dataText;
+      let dataTitleCreate = document.createElement('h1');
+      dataTitleCreate.innerHTML = dataTitle;
+      popupInner.insertBefore(dataTitleCreate)
+  }
 
-
+    axios.get(url)
+            .then(response => {
+                const dataResponse = response.data.data
+                successRequest();
+            })
+            .catch(error => console.error(error));
+});
 
 /* URL (Ex.4) */
 
